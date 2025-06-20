@@ -21,9 +21,5 @@
 	},
 	"workspaces": [
 		"frontend"
-	],
-	"dependencies": {
-		"@tailwindcss/vite": "^4.1.10",
-		"tailwindcss": "^4.1.10"
-	}
+	]
 }

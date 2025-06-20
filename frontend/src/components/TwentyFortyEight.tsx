@@ -180,7 +180,7 @@ export function TwentyFortyEight() {
 				</div>
 			</div>
 			{!isConnected && (
-				<div className="absolute top-0 left-0 w-full h-full bg-slate-600/50 backdrop-blur-xs rounded-lg flex items-center justify-center">
+				<div className="fixed top-0 left-0 w-full h-full bg-slate-600/50 backdrop-blur-xs rounded-lg flex items-center justify-center">
 					{(() => {
 						switch (status) {
 							case "connecting":

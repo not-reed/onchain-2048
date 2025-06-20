@@ -17,8 +17,9 @@ export const ChaosButton = forwardRef<HTMLButtonElement, ButtonProps>(
 					type={type}
 					className={clsx(
 						"relative peer",
+						"cursor-pointer",
 						"bg-white text-black border border-black ",
-						"px-4 py-2 ",
+						"px-4 py-2 text-2italic hover:xl font-bold",
 						"transition-transform",
 
 						"active:translate-x-[1px] active:translate-y-[1px]",
