@@ -1,0 +1,29 @@
+{
+	"name": "onchain-2048",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build:contracts": "cd contracts && forge build",
+		"deploy:contracts": "cd contracts && forge script script/Deploy.s.sol:Deploy2048 --rpc-url $RPC_URL --private-key $PRIVATE_KEY --broadcast",
+		"build:frontend": "bun --bun --cwd frontend build",
+		"preview:frontend": "bun --bun --cwd frontend preview",
+		"dev": "bun run build:contracts && bun --bun --cwd frontend dev",
+		"bot": "bun run bot.ts",
+		"build": "bun run build:contracts && bun run build:frontend"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.0.0",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"workspaces": [
+		"frontend"
+	],
+	"dependencies": {
+		"@tailwindcss/vite": "^4.1.10",
+		"tailwindcss": "^4.1.10"
+	}
+}
