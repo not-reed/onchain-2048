@@ -1,0 +1,10 @@
+{
+    "tailwindCSS.classFunctions": [
+        "cva",
+        "cx",
+        "cn",
+    ],
+    "cSpell.words": [
+        "wagmi"
+    ]
+}

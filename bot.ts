@@ -1,6 +1,3 @@
-// important hotfix
-import "./wat";
-
 import { happyChainSepolia } from "@happy.tech/core";
 import {
 	createPublicClient,
@@ -12,43 +9,67 @@ import { privateKeyToAccount } from "viem/accounts";
 import ABI from "./abi/TwentyFortyEight.sol/TwentyFortyEight.json";
 import run from "./contracts/broadcast/Deploy.s.sol/216/run-latest.json";
 
-const walletClient = createWalletClient({
-	account: privateKeyToAccount(process.env.PRIVATE_KEY as `0x${string}`, {
-		nonceManager,
-	}),
-	chain: happyChainSepolia,
-	transport: http(),
-});
+const { PRIVATE_KEY, GAME_ROOM = "happychain" } = process.env;
+assertPrivateKey(PRIVATE_KEY);
 
-const publicClient = createPublicClient({
+const config = {
+	account: privateKeyToAccount(PRIVATE_KEY, { nonceManager }),
 	chain: happyChainSepolia,
 	transport: http(),
-});
-const directions = ["UP", "DOWN", "LEFT", "RIGHT"];
+} as const;
+
+const walletClient = createWalletClient(config);
+const publicClient = createPublicClient(config);
+
+(async () => {
+	console.log("🚀 Bot starting. Will make random move once every block...");
+	publicClient.watchBlockNumber({
+		onBlockNumber: async () => {
+			try {
+				await makeRandomMove();
+			} catch {}
+		},
+	});
+})();
 
 async function makeRandomMove() {
-	const dirIndex = Math.floor(Math.random() * 4);
+	const { index, label } = getNextMove();
+
+	let hash: `0x${string}` | undefined;
+
 	try {
-		console.log(`🎮 Moving  ${directions[dirIndex]}...`);
-		const hash = await walletClient.writeContract({
+		console.log(`🎮 Moving ${label}...`);
+		hash = await walletClient.writeContract({
 			address: run.transactions[0]?.contractAddress,
 			abi: ABI.abi,
 			functionName: "move",
-			args: ["happychain", dirIndex],
+			args: [GAME_ROOM, index],
 		});
 		await publicClient.waitForTransactionReceipt({ hash });
 		console.log(
-			`🎮 Moved: ${directions[dirIndex]} at ${new Date().toLocaleTimeString()}`,
+			`🎮 Moved: ${label} at ${new Date().toLocaleTimeString()}`,
+			hash,
 		);
+		// biome-ignore lint/suspicious/noExplicitAny: its fine...
 	} catch (err: any) {
-		console.error("❌ Move failed:", err?.shortMessage || err?.message);
+		console.error("❌ Move failed:", err?.shortMessage || err?.message, hash);
 	}
 }
 
-async function main() {
-	console.log("🚀 Bot starting...");
-
-	setInterval(makeRandomMove, 5000);
+function getNextMove() {
+	const directions = ["UP", "DOWN", "LEFT", "RIGHT"];
+	const index = Math.floor(Math.random() * 4);
+	const label = directions[index];
+	return { index, label };
 }
+function assertPrivateKey(
+	key: string | undefined,
+): asserts key is `0x${string}` {
+	if (!key) throw new Error("PRIVATE_KEY is not set in environment variables");
 
-main();
+	if (!/^(0x)?[0-9a-fA-F]{64}$/.test(key)) {
+		throw new Error(
+			"PRIVATE_KEY is not a valid 32-byte hex string (64 hex characters).",
+		);
+	}
+}
