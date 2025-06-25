@@ -16,9 +16,9 @@
       "version": "0.0.0",
       "dependencies": {
         "@bprogress/react": "^1.2.7",
-        "@happy.tech/boop-sdk": "^0.2.0",
-        "@happy.tech/core": "^0.3.0",
-        "@happy.tech/react": "^0.3.0",
+        "@happy.tech/boop-sdk": "^0.3.0",
+        "@happy.tech/core": "^0.4.0",
+        "@happy.tech/react": "^0.4.0",
         "@tanstack/react-query": "^5.80.10",
         "@wagmi/core": "^2.17.3",
         "clsx": "^2.1.1",
@@ -166,11 +166,11 @@
 
     "@ethereumjs/util": ["@ethereumjs/util@8.1.0", "", { "dependencies": { "@ethereumjs/rlp": "^4.0.1", "ethereum-cryptography": "^2.0.0", "micro-ftch": "^0.3.1" } }, "sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA=="],
 
-    "@happy.tech/boop-sdk": ["@happy.tech/boop-sdk@0.2.0", "", {}, "sha512-ir9chrMRl/y0graToevTRRfdS4o08w13ptwpUdFh5xvYp0SvoaLkHuGN8kqHlioz5q/mFkaKl7NDujgfAdRUqQ=="],
+    "@happy.tech/boop-sdk": ["@happy.tech/boop-sdk@0.3.0", "", {}, "sha512-GkC6ZBHML9oero8UYbSCmhHzcLZ2COkO5/xpRFM1b+enyg4xVsdseNyCuWRpOI65MxOrEScuObwp4Arb6lSHZw=="],
 
-    "@happy.tech/core": ["@happy.tech/core@0.3.0", "", { "dependencies": { "@wagmi/core": "^2.17.2", "viem": "^2.30.1" } }, "sha512-BdAQpDMowfHQoG4hr3ZjJLQ9CDzhioxH4mSp8FQ5a9h6/Z+zWa1zGYS+F9SkGqU73Iz8lsLc3291qZvDPPLFVA=="],
+    "@happy.tech/core": ["@happy.tech/core@0.4.0", "", { "dependencies": { "@wagmi/core": "^2.17.2", "viem": "^2.30.1" } }, "sha512-vUhbDdY5zOlhvLwdIPDW7aS40WwW6GIwsDXu+yeqgY7Hu8PdAMzEgQSojzL3pC7bRjFDG8id0gvnECF8PI5GTg=="],
 
-    "@happy.tech/react": ["@happy.tech/react@0.3.0", "", { "peerDependencies": { "@happy.tech/core": "0.3.0", "react": "^19.1.0", "react-dom": "^19.1.0" } }, "sha512-kEgg0tbr355H/STVIYpK8lF6JARGeWyBO3leTe3X9FUiH9MmvF8rry9bRe8okx2Kq0AHmWVzIFgBzXrKdryI8A=="],
+    "@happy.tech/react": ["@happy.tech/react@0.4.0", "", { "peerDependencies": { "@happy.tech/core": "0.4.0", "react": "^19.1.0", "react-dom": "^19.1.0" } }, "sha512-XTOCVhoxQgSIRdFxoOL8ca5IHarVZV7XzGQE+dSf+UqPG6Q9LghOVEGElj1W/ylW+QQ112CVlO7JRBfUiHoJ0w=="],
 
     "@isaacs/fs-minipass": ["@isaacs/fs-minipass@4.0.1", "", { "dependencies": { "minipass": "^7.0.4" } }, "sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w=="],
 

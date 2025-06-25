@@ -1,5 +1,7 @@
 import { useProgress } from "@bprogress/react";
 import { requestSessionKey } from "@happy.tech/core";
+// import { WalletConnectButton } from "./WalletConnectButton";
+import { ConnectButton } from "@happy.tech/react";
 import { useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { useCallback, useEffect, useState } from "react";
@@ -8,7 +10,6 @@ import { keccak256, toHex } from "viem/utils";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "../deployments";
 import { Button, ChaosButton, GameButton } from "./Button";
-import { WalletConnectButton } from "./WalletConnectButton";
 
 function hashGameId(name: string) {
 	return keccak256(toHex(name));
@@ -188,7 +189,7 @@ export function TwentyFortyEight() {
 							case "reconnecting":
 								return <span className="text-gray-300">Reconnecting...</span>;
 							case "disconnected":
-								return <WalletConnectButton />;
+								return <ConnectButton />;
 						}
 					})()}
 				</div>

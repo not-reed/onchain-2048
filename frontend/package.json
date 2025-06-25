@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@bprogress/react": "^1.2.7",
-    "@happy.tech/boop-sdk": "^0.2.0",
-    "@happy.tech/core": "^0.3.0",
-    "@happy.tech/react": "^0.3.0",
+    "@happy.tech/boop-sdk": "^0.3.0",
+    "@happy.tech/core": "^0.4.0",
+    "@happy.tech/react": "^0.4.0",
     "@tanstack/react-query": "^5.80.10",
     "@wagmi/core": "^2.17.3",
     "clsx": "^2.1.1",
